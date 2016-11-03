@@ -1,0 +1,10 @@
+# Specially for Daria Vladimirovna
+*
+!*.java
+!*.scala
+!*.kt
+!*.hs
+!*.fxml
+!pom.xml
+!.gitignore
+!*/
