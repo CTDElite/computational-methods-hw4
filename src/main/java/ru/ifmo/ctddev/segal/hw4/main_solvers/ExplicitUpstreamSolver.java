@@ -7,10 +7,10 @@ package ru.ifmo.ctddev.segal.hw4.main_solvers;
 public class ExplicitUpstreamSolver extends UsualSolver {
 
     @Override
-    double[] step(double[] cur, double dx, double dt, double u, double cappa) {
+    double[] step(double[] cur, double dx, double dt, double u, double kappa) {
         int n = cur.length;
         double[] res = new double[cur.length];
-        double r = cappa * dt / (dx * dx);
+        double r = kappa * dt / (dx * dx);
         double s = u * dt / dx;
         res[0] = (1 - r) * cur[0] + r * cur[1];
         for (int k = 1; k < n - 1; k++) {

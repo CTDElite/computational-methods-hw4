@@ -11,9 +11,9 @@ import java.util.Arrays;
 public class ImplicitDownstreamSolver extends UsualSolver {
 
     @Override
-    double[] step(double[] cur, double dx, double dt, double u, double cappa) {
+    double[] step(double[] cur, double dx, double dt, double u, double kappa) {
         double[][] matrix = new double[cur.length][];
-        double r = cappa * dt / (dx * dx);
+        double r = kappa * dt / (dx * dx);
         double s = u * dt / dx;
         Arrays.setAll(matrix, i -> new double[]{-r, 1 - s + 2 * r, s - r});
         matrix[0] = new double[] {1 - s + r, s - r};

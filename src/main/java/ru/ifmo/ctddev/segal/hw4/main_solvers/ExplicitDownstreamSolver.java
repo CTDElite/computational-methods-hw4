@@ -7,8 +7,8 @@ package ru.ifmo.ctddev.segal.hw4.main_solvers;
 public class ExplicitDownstreamSolver extends UsualSolver {
 
     @Override
-    double[] step(double[] cur, double dx, double dt, double u, double cappa) {
-        double r = cappa * dt / (dx * dx);
+    double[] step(double[] cur, double dx, double dt, double u, double kappa) {
+        double r = kappa * dt / (dx * dx);
         double s = u * dt / dx;
         double[] ans = new double[cur.length];
         for (int i = 0; i < ans.length; i++) {

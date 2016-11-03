@@ -8,10 +8,10 @@ import ru.ifmo.ctddev.segal.hw4.solvers.TridiagonalSolver;
 
 public class ImplicitUpstreamSolver extends UsualSolver {
     @Override
-    double[] step(double[] cur, double dx, double dt, double u, double cappa) {
+    double[] step(double[] cur, double dx, double dt, double u, double kappa) {
         int n = cur.length;
         double[][] matrix = new double[cur.length][];
-        double r = cappa * dt / (dx * dx);
+        double r = kappa * dt / (dx * dx);
         double s = u * dt / dx;
         double prevT = -s - r;
         double curT = 1 + s + 2 * r;
