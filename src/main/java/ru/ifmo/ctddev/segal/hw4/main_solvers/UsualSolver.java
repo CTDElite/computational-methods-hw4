@@ -8,7 +8,12 @@ public abstract class UsualSolver implements Solver {
 
     @Override
     public double[][] solve(double[] start, double dx, double dt, double u, double cappa, int size) {
-        // todo: alex700
-        return null;
+        double[][] ans = new double[size][];
+        ans[0] = new double[start.length];
+        System.arraycopy(start, 0, ans[0], 0, ans[0].length);
+        for (int i = 1; i < ans.length; i++) {
+            ans[i] = step(ans[i - 1], dx, dt, u, cappa);
+        }
+        return ans;
     }
 }

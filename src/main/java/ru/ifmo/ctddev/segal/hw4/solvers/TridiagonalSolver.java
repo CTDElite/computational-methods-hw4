@@ -17,7 +17,7 @@ public class TridiagonalSolver {
      * @return solution of this system
      *
      */
-    double[] solve(double[][] matrix, double[] free) {
+    public static double[] solve(double[][] matrix, double[] free) {
         return null;
     }
 
