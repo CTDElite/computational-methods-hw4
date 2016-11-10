@@ -56,8 +56,9 @@ public class PlotController implements Initializable {
 
     public void draw(int[] colors) {
         tPane.getChildren().clear();
+        double squareSide = tPane.getWidth() / colors.length;
         for (int i = 0; i < colors.length; i++) {
-            Rectangle rectangle = new Rectangle(20, 20, Color.rgb(255, 255 - colors[i], 255 - colors[i]));
+            Rectangle rectangle = new Rectangle(squareSide, squareSide, Color.rgb(255, 255 - colors[i], 255 - colors[i]));
             GridPane.setRowIndex(rectangle, 0);
             GridPane.setColumnIndex(rectangle, i);
             tPane.getChildren().add(rectangle);

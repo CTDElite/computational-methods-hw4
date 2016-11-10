@@ -5,18 +5,19 @@
 <?import javafx.scene.text.*?>
 <?import ru.ifmo.ctddev.segal.hw4.myjavafx.EmbeddedWebView?>
 
-<AnchorPane maxHeight="600.0"
+<BorderPane maxHeight="600.0"
             maxWidth="900.0"
             xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/2.2"
             fx:controller="ru.ifmo.ctddev.segal.hw4.ui.PlotController">
 
-    <Slider fx:id="tSlider" min="0" max="10" blockIncrement="1" showTickMarks="true"
-            minorTickCount="0" majorTickUnit="1" showTickLabels="true" snapToTicks="true">
+    <top>
+        <Slider fx:id="tSlider" BorderPane.alignment="CENTER" blockIncrement="1"
+                majorTickUnit="1" max="10" min="0" minorTickCount="0" showTickLabels="true"
+                showTickMarks="true" snapToTicks="true" />
+    </top>
 
-    </Slider>
-
-    <GridPane fx:id="tPane" layoutY="200">
-
-    </GridPane>
-</AnchorPane>
+    <bottom>
+        <GridPane fx:id="tPane" />
+    </bottom>
+</BorderPane>
