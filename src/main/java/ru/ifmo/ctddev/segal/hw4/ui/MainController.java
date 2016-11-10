@@ -3,13 +3,21 @@ package ru.ifmo.ctddev.segal.hw4.ui;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import ru.ifmo.ctddev.segal.hw4.main_solvers.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -43,7 +51,7 @@ public class MainController implements Initializable {
     private int size;
     private double u;
 
-    private List<Solver> solvers;
+    private List<Solver> solvers = new ArrayList<>();
 
     public void update() {
         dx = Double.parseDouble(dxValue.getText());
@@ -85,9 +93,19 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void build(ActionEvent event) {
+    private void build(ActionEvent event) throws IOException {
         update();
 
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Plot.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene(root));
+
+        PlotController controller = loader.getController();
+        controller.initializeData(dx, dt, kappa, size, u, solvers);
+
+        stage.show();
     }
 
     private class OnlyDouble implements EventHandler<KeyEvent> {
