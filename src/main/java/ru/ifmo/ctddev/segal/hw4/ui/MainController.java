@@ -81,9 +81,9 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dxValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
-        dxValue.setText("10");
+        dxValue.setText("0.001");
         dtValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
-        dtValue.setText("10");
+        dtValue.setText("0.001");
         kappaValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
         kappaValue.setText("10");
         uValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());

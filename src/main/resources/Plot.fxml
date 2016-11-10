@@ -15,4 +15,8 @@
             minorTickCount="0" majorTickUnit="1" showTickLabels="true" snapToTicks="true">
 
     </Slider>
+
+    <GridPane fx:id="tPane" layoutY="200">
+
+    </GridPane>
 </AnchorPane>
