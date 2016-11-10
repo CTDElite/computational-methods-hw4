@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import ru.ifmo.ctddev.segal.hw4.myjavafx.EmbeddedWebView?>
+
+<AnchorPane maxHeight="600.0"
+            maxWidth="900.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="ru.ifmo.ctddev.segal.hw4.ui.MainController">
+    <EmbeddedWebView alignment="CENTER" layoutX="20.0" layoutY="14.0" prefWidth="150.0" prefHeight="29">
+        <content><![CDATA[
+            dx =
+        ]]>
+        </content>
+    </EmbeddedWebView>
+    <EmbeddedWebView alignment="CENTER" layoutX="20.0" layoutY="47.0" prefWidth="150.0" prefHeight="29">
+        <content><![CDATA[
+            dt =
+        ]]>
+        </content>
+    </EmbeddedWebView>
+    <EmbeddedWebView alignment="CENTER" layoutX="20.0" layoutY="75.0" prefWidth="150.0" prefHeight="29">
+        <content><![CDATA[
+            u =
+        ]]>
+        </content>
+    </EmbeddedWebView>
+    <TextField fx:id="dxValue" layoutX="100.0" layoutY="19.0" maxWidth="70.0" minWidth="70.0"
+               prefWidth="70.0"/>
+    <TextField fx:id="dtValue" layoutX="100.0" layoutY="47.0" maxWidth="70.0" minWidth="70.0"
+               prefWidth="70.0"/>
+    <TextField fx:id="uValue" layoutX="100.0" layoutY="75.0" maxWidth="70.0" minWidth="70.0"
+               prefWidth="70.0"/>
+    <EmbeddedWebView alignment="CENTER" layoutX="180.0" layoutY="14.0" prefWidth="150.0" prefHeight="29">
+        <content>
+            <![CDATA[
+                &kappa; =
+            ]]>
+        </content>
+    </EmbeddedWebView>
+
+    <EmbeddedWebView alignment="CENTER" layoutX="180.0" layoutY="43.0" prefWidth="150.0" prefHeight="29">
+        <content><![CDATA[
+            size =
+        ]]>
+        </content>
+    </EmbeddedWebView>
+    <TextField fx:id="kappaValue" layoutX="250.0" layoutY="19.0" maxWidth="70.0" minWidth="70.0"
+               prefWidth="70.0"/>
+    <TextField fx:id="sizeValue" layoutX="250.0" layoutY="47.0" maxWidth="70.0" minWidth="70.0"
+               prefWidth="70.0"/>
+
+    <CheckBox fx:id="explicitDownstreamSolver"
+              layoutX="60.0"
+              layoutY="140.0"
+              mnemonicParsing="false"
+              selected="true"
+              text="Explicit Downstream Solver"/>
+    <CheckBox fx:id="explicitUpstreamSolver"
+              layoutX="60.0"
+              layoutY="165.0"
+              mnemonicParsing="false"
+              selected="true"
+              text="Explicit Upstream Solver"/>
+    <CheckBox fx:id="implicitDownstreamSolver"
+              layoutX="60.0"
+              layoutY="190.0"
+              mnemonicParsing="false"
+              selected="true"
+              text="Implicit Downstream Solver"/>
+    <CheckBox fx:id="implicitUpstreamSolver"
+              layoutX="300.0"
+              layoutY="140.0"
+              mnemonicParsing="false"
+              selected="true"
+              text="Explicit Upstream Solver"/>
+    <CheckBox fx:id="leapfrogSolver"
+              layoutX="300.0"
+              layoutY="165.0"
+              mnemonicParsing="false"
+              selected="true"
+              text="Leapfrog Solver"/>
+
+    <Button layoutX="51.0" layoutY="260.0" mnemonicParsing="false" onAction="#build"
+            text="Build" />
+</AnchorPane>

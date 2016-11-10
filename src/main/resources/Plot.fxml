@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import ru.ifmo.ctddev.segal.hw4.myjavafx.EmbeddedWebView?>
+
+<AnchorPane maxHeight="600.0"
+            maxWidth="900.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="ru.ifmo.ctddev.segal.hw4.ui.PlotController">
+
+    <Slider fx:id="tSlider" min="0" max="10">
+
+    </Slider>
+</AnchorPane>
