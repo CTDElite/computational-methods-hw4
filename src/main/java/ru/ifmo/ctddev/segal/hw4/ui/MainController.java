@@ -85,11 +85,11 @@ public class MainController implements Initializable {
         dtValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
         dtValue.setText("0.001");
         kappaValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
-        kappaValue.setText("10");
+        kappaValue.setText("0");
         uValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
-        uValue.setText("10");
+        uValue.setText("1");
         sizeValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyInt());
-        sizeValue.setText("10");
+        sizeValue.setText("20");
     }
 
     @FXML

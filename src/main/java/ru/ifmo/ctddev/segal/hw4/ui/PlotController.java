@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import ru.ifmo.ctddev.segal.hw4.main_solvers.Solver;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,15 +26,15 @@ public class PlotController implements Initializable {
     @FXML
     public GridPane tPane;
     @FXML
-    public LineChart<Double, Double> lineChart;
+    public LineChart<Integer, Double> lineChart;
     private double dx;
     private double dt;
     private double kappa;
     private int size;
     private double u;
-    private double[][] ans;
     private int[][] spectrum;
     private List<Solver> solvers;
+    private List<double[][]> ans;
     @FXML
     private Slider tSlider;
 
@@ -46,10 +47,10 @@ public class PlotController implements Initializable {
         this.u = u;
 
         tSlider.setMax(size - 1);
-
-        Solver solver = solvers.get(0);
-        ans = solver.solve(new double[]{0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, dx, dt, u, kappa, size);
-
+        ans = new ArrayList<>();
+        for (Solver solver : solvers) {
+            ans.add(solver.solve(new double[]{0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, dx, dt, u, kappa, size));
+        }
         spectrum = new int[255][3];
         for (int i = 0; i < spectrum.length; i++) {
             double tt = i;
@@ -73,20 +74,17 @@ public class PlotController implements Initializable {
         return ans;
     }
 
-    public void buildGraphic(double[] Ts) {
-        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
-        final ObservableList<XYChart.Data<Double, Double>> datas = FXCollections.observableArrayList(
-                /*new XYChart.Data<>(0.0, 1.0),
-                new XYChart.Data<>(1.2, 1.4),
-                new XYChart.Data<>(2.2, 1.9),
-                new XYChart.Data<>(2.7, 2.3),
-                new XYChart.Data<>(2.9, 0.5)*/
-        );
-        for (int i = 0; i < Ts.length; i++) {
-            System.err.printf("%d -> %.3f\n", i, Ts[i]);
-            datas.add(new XYChart.Data(i, Ts[i]));
+    public void buildGraphics(int time) {
+        ObservableList<XYChart.Series<Integer, Double>> lineChartData = FXCollections.observableArrayList();
+        for (int x = 0; x < ans.size(); x++) {
+            ObservableList<XYChart.Data<Integer, Double>> data = FXCollections.observableArrayList();
+            double[] Ts = ans.get(x)[time];
+            for (int i = 0; i < Ts.length; i++) {
+//                System.err.printf("%d -> %.3f\n", i, Ts[i]);
+                data.add(new XYChart.Data<>(i, Ts[i]));
+            }
+            lineChartData.add(new LineChart.Series<>(solvers.get(x).getClass().getSimpleName(), data));
         }
-        lineChartData.add(new LineChart.Series<>("Series 1", datas));
         lineChart.setData(lineChartData);
     }
 
@@ -115,8 +113,8 @@ public class PlotController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            draw(getColors(ans[newValue.intValue()]));
-            buildGraphic(ans[newValue.intValue()]);
+            draw(getColors(ans.get(0)[newValue.intValue()]));
+            buildGraphics(newValue.intValue());
         });
     }
 }
