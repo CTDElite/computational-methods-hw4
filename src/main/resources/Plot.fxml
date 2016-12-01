@@ -5,6 +5,9 @@
 <?import javafx.scene.text.*?>
 <?import ru.ifmo.ctddev.segal.hw4.myjavafx.EmbeddedWebView?>
 
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <BorderPane maxHeight="600.0"
             maxWidth="900.0"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -16,6 +19,17 @@
                 majorTickUnit="1" max="10" min="0" minorTickCount="0" showTickLabels="true"
                 showTickMarks="true" snapToTicks="true" />
     </top>
+
+    <center>
+        <LineChart fx:id="lineChart">
+            <xAxis>
+                <NumberAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </LineChart>
+    </center>
 
     <bottom>
         <GridPane fx:id="tPane" />
