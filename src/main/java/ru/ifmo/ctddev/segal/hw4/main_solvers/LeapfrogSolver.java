@@ -12,25 +12,17 @@ public class LeapfrogSolver implements Solver {
         double[] prevIter = start;
         double[] preprevIter = start;
 
-        for (int k = 0; k < iterations; k++) {
-            for (int n = 0; n < start.length; n++) {
-                final double prevLeft = prevIter[Math.max(0, n - 1)];
-                final double prevRight = prevIter[Math.min(start.length - 1, n + 1)];
-                ans[k][n] = dt * preprevIter[n] - (dx * dx * (prevRight - prevLeft) - 4 * dt * ϰ * prevIter[n])
-                                                / (u * dx + 2 * ϰ);
+        final double s = u * dt / dx;
+        final double r = ϰ * dt / (dx * dx);
+        for (int n = 0; n < iterations; n++) {
+            for (int k = 0; k < start.length; k++) {
+                final double prevLeft = prevIter[Math.max(0, k - 1)];
+                final double prevRight = prevIter[Math.min(start.length - 1, k + 1)];
+                ans[n][k] = preprevIter[k] - (s + 2 * r) * prevRight + (s - 2 * r) * prevLeft + 4 * r * prevIter[k];
             }
             preprevIter = prevIter;
-            prevIter = ans[k];
+            prevIter = ans[n];
         }
-//        for (int n = 0; n < iterations; n++) {
-//            for (int k = 0; k < start.length; k++) {
-//                final double prevLeft = prevIter[Math.max(0, k - 1)];
-//                final double prevRight = prevIter[Math.min(start.length - 1, k + 1)];
-//                ans[n][k] = preprevIter[k] - dt * (u*dx*(prevRight - prevLeft) + 2*ϰ*(prevLeft + prevRight - 2*prevIter[k])) / (dx * dx);
-//            }
-//            preprevIter = prevIter;
-//            prevIter = ans[n];
-//        }
 
         return ans;
     }
