@@ -89,7 +89,7 @@ public class MainController implements Initializable {
         uValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyDouble());
         uValue.setText("1");
         sizeValue.addEventFilter(KeyEvent.KEY_TYPED, new OnlyInt());
-        sizeValue.setText("20");
+        sizeValue.setText("100");
     }
 
     @FXML

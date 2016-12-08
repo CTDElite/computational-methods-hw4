@@ -49,7 +49,10 @@ public class PlotController implements Initializable {
         tSlider.setMax(size - 1);
         ans = new ArrayList<>();
         for (Solver solver : solvers) {
-            ans.add(solver.solve(new double[]{0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, dx, dt, u, kappa, size));
+            double[] a = new double[100];
+            Arrays.setAll(a, i -> 2 * i < a.length ? 1 : 0);
+            a[a.length / 2] = 1;
+            ans.add(solver.solve(a, dx, dt, u, kappa, size));
         }
         spectrum = new int[255][3];
         for (int i = 0; i < spectrum.length; i++) {
